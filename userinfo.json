@@ -1,6 +1,1 @@
-{"500": {"username": "jane", "pin": "0000", "balance": {"KSH": 800, "USD": 10}}, 
-"600": {"username": "joe", "pin": "0001", "balance": {"KSH": 2000, "USD": 20}}, 
-"700": {"username": "jill", "pin": "0002", "balance": {"KSH": 3200, "USD": 1000}}, 
-"800": {"username": "jenny", "pin": "0003", "balance": {"KSH": 4000, "USD": 1000}}, 
-"900": {"username": "james", "pin": "0004", "balance": {"KSH": 5000, "USD": 1000}}, 
-"400": {"username": "jordan", "pin": "0005", "balance": {"KSH": 7000, "USD": 1000}}}
+{"500": {"username": "jane", "pin": "0000", "balance": {"KSH": 800, "USD": 10}}, "600": {"username": "joe", "pin": "0001", "balance": {"KSH": 1950.0, "USD": 20}}, "700": {"username": "jill", "pin": "0002", "balance": {"KSH": 3200, "USD": 1000}}, "800": {"username": "jenny", "pin": "0003", "balance": {"KSH": 4000, "USD": 1000}}, "900": {"username": "james", "pin": "0004", "balance": {"KSH": 5000, "USD": 1000}}, "400": {"username": "jordan", "pin": "0005", "balance": {"KSH": 7000, "USD": 1000}}}
