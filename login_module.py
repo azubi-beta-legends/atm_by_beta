@@ -3,7 +3,7 @@
 # user login attempts
 
 
-from tkinter import W
+# from tkinter import W
 import jsonHandler
 import getpass
 import stdiomask
@@ -35,7 +35,7 @@ def user_login():
 			if userAccount != None:
 				return userAccount
 			else:
-				user_login()
+				print('wrong credentials')
 		else:
 			print('Wrong credentials! Try again.')
 			exit

@@ -13,13 +13,14 @@ def choose_transaction():
 
 
 def choose_currency():
-    currencyChoice = input('Choose 1 for KSH and 2 for USD: ')
-    if currencyChoice == '1':
-        return 'KSH'
-    elif currencyChoice == '2':
-        return 'USD'
-    elif currencyChoice == '0':
-        sys.exit()
-    else:
-        choose_currency()
-        
+    currencyChoice = ''
+    while (currencyChoice != '1' or currencyChoice != '2' or currencyChoice != '0'):
+        currencyChoice = input('Choose 1 for KSH and 2 for USD. (0 to quit): ')
+    
+        if currencyChoice == '0':
+            sys.exit()
+        elif currencyChoice == '1':
+            return 'KSH'
+        elif currencyChoice == '2':
+            return 'USD'
+            

@@ -6,6 +6,7 @@
 import json
 import datetime
 import jsonHandler
+import check_type_module
 
 
 date = datetime.datetime.now()
