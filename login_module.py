@@ -24,20 +24,25 @@ def user_login():
 	try:
 		userAccount = input('\nEnter your account number: ')
 		userPin = stdiomask.getpass('Enter your pin: ')
-		# count = 0
-
-		if userAccount not in userData.keys():
-			print('Invalid account or password, try again')
-			user_login()
-
-		elif userAccount in userData.keys() and userPin == userData[userAccount]['pin']:
-			print(f'\nHello, {userData[userAccount]["username"]}')
-			if userAccount != None:
-				return userAccount
-			else:
-				print('wrong credentials')
+		count = 0
+		while (userAccount not in userData.keys() or userPin != userData[userAccount]['pin']) and count < 3:
+			userAccount = input('\nEnter your account number: ')
+			userPin = stdiomask.getpass('Enter your pin: ')
+			if userAccount not in userData.keys():
+				print('Wrong account number!')
+			elif userPin != userData[userAccount]['pin']:
+				print('Wrong pin')
+			print(f'{2-count} attempts remaining!!')
+			count += 1
+			
+		
+		if userAccount not in userData.keys() or userPin != userData[userAccount]['pin']:
+			print('Three failed attempts!!\nContact the customer desk to retrieve your credentials. \nGOODBYE!!')
+			sys.exit()
 		else:
-			print('Wrong credentials! Try again.')
-			exit
+			print(f'\nHello, {userData[userAccount]["username"]}')
+			return userAccount
+
+
 	except EOFError or userAccount == 0:
 		sys.exit()

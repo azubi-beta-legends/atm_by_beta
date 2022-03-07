@@ -10,7 +10,6 @@ import check_type_module
 
 
 date = datetime.datetime.now()
-# userData = jsonHandler.readJsonFile(r'C:\Users\DESMOND\Desktop\Azubi\5.Python\ATM\atm_by_beta-babyRwanda-patch-Transactions1\userinfo.json')
 newBalance = 0
 exchangeRate = 113.00
 
@@ -19,16 +18,16 @@ exchangeRate = 113.00
 def withdraw(userData, currentUserId, currency):
     #store the current balance of the current user
     currentBalance = userData[currentUserId]['balance'][currency]
-    print(f"Your balance: {currentBalance}")
-    moneyToWithdraw = int(input('Enter withdrwal amount (must be less than balance): '))
+    print("Your balance: {:.2f}".format(currentBalance))
+    moneyToWithdraw = currentBalance + 1
+    # moneyToWithdraw = float(input('Enter withdrwal amount (must be less than balance): '))
     count = 0
     #if 3 attemps failed, go backto choose transaction
 
-    if moneyToWithdraw >= currentBalance:
-        print("Enter withdrwal amount (must be less than balance): ")
-        moneyToWithdraw = float(input())
+    while moneyToWithdraw >= currentBalance and count < 3:
+        moneyToWithdraw = float(input('Enter withdrwal amount (must be less than balance): '))
         count += 1      #count number of attempts
-    elif 0<moneyToWithdraw<currentBalance:
+    if 0<moneyToWithdraw<currentBalance:
         print("Withdrawal intiated",".",".",".","Withdrawal complete")
         newBalance = currentBalance - moneyToWithdraw
         userData[currentUserId]['balance'][currency] = newBalance
@@ -41,9 +40,9 @@ def withdraw(userData, currentUserId, currency):
         answer = answer.upper()
 
         if answer=='Y':
-            print(f"\nWithdral Successful!\nThank you for choosing BETA BANK\n\
-********************************\n\nDate: {date}\nAmount Withdrawn: {currency}. {moneyToWithdraw}\nBalance: {newBalance}\n\
-********************************")                    
+            print("\nWithdral Successful!\nThank you for choosing BETA BANK\n\
+********************************\n\nDate: {}\nAmount Withdrawn: {}. {}\nBalance: {:.2f}\n\
+********************************".format(date, currency, moneyToWithdraw, newBalance))                    
         else:
             print("Withdrawal Successful! Thank you for choosing BETA BANK!")
 
@@ -108,7 +107,7 @@ def transfer(userData, currentUserId, currency):
                 
             else:
                 print('You have insufficient funds to complete the transaction!')
-                transfer()
+                transfer(userData, currentUserId, currency)
 
         elif transferTo in userData.keys() and currency == 'USD':
             transferAmount = float(input('Enter transfer amount: '))
