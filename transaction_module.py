@@ -18,7 +18,7 @@ exchangeRate = 113.00
 def withdraw(userData, currentUserId, currency):
     #store the current balance of the current user
     currentBalance = userData[currentUserId]['balance'][currency]
-    print("Your balance: {:.2f}".format(currentBalance))
+    print("Your current balance is {}.{:.2f}".format(currency,currentBalance))
     moneyToWithdraw = currentBalance + 1
     # moneyToWithdraw = float(input('Enter withdrwal amount (must be less than balance): '))
     count = 0
@@ -41,8 +41,8 @@ def withdraw(userData, currentUserId, currency):
 
         if answer=='Y':
             print("\nWithdral Successful!\nThank you for choosing BETA BANK\n\
-********************************\n\nDate: {}\nAmount Withdrawn: {}. {}\nBalance: {:.2f}\n\
-********************************".format(date, currency, moneyToWithdraw, newBalance))                    
+********************************\n\nDate: {}\nAmount Withdrawn: {}. {}\nBalance: {}. {:.2f}\n\
+********************************".format(date, currency.lower(), moneyToWithdraw, currency.lower(), newBalance))                    
         else:
             print("Withdrawal Successful! Thank you for choosing BETA BANK!")
 
@@ -52,7 +52,7 @@ def deposit(userData, currentUserId, currency):
     #store the current balance of the current user
     currentBalance = userData[currentUserId]['balance'][currency]
     
-    print(f"Your current balance is {currentBalance}")
+    print("Your current balance is {}.{:.2f}".format(currency,currentBalance))
     moneyToDeposit = float(input("Enter the amount of money you would like to deposit: "))
     if moneyToDeposit > 0:
         print("Deposit intiated...")
@@ -65,10 +65,9 @@ def deposit(userData, currentUserId, currency):
         answer = input()
         answer = answer.upper()
         if answer=='Y':
-            print(f"Deposit was successful!\n\
-                Thank you for choosing BETA BANK\n*****************************\n\
-                    \nDate: {date}\nDeposited Money:{moneyToDeposit}\n\
-                        Balance: {newBalance}")
+            print("\nDeposit Successful!\nThank you for choosing BETA BANK\n\
+********************************\n\nDate: {}\nAmount Deposited: {}. {:.2f}\nBalance: {}. {:.2f}\n\
+********************************".format(date, currency.lower(), moneyToDeposit, currency.lower(), newBalance)) 
         else:
             print("Deposit Successful! Thank you for choosing BETA BANK.")
     
@@ -99,9 +98,9 @@ def transfer(userData, currentUserId, currency):
                 answer = answer.upper()
 
                 if answer=='Y':
-                    print(f"Transfer Successful!\nThank you for choosing BETA BANK\n*****************************\n\n\
-                        Date: {date}\nTransferred {transferAmount} to {userData[transferTo]['username']}\n\
-                        Balance: {userData[currentUserId]['balance']['KSH']}\n")
+                    print("\nTransfer Successful!\nThank you for choosing BETA BANK\n\
+********************************\n\nDate: {}\nTransferred Ksh. {:.2f} to {}\n\
+Balance: Ksh. {:.2f}\n".format(date, transferAmount, userData[transferTo]['username'], userData[currentUserId]['balance']['KSH']))
                 else:
                     print("Transfer Successful! Thank you for choosing BETA BANK.")
                 
@@ -124,10 +123,9 @@ def transfer(userData, currentUserId, currency):
                 answer = input()
                 answer = answer.upper()
                 if answer=='Y':
-                    print(f"Transfer Successful!\n\
-                            Thank you for choosing BETA BANK\n*****************************\n\
-                            \nDate: {date}\nTransferred {transferAmount} to {userData[transferTo]['username']}\n\
-                            Balance: {userData[currentUserId]['balance']['USD']}")
+                    print("\nTransfer Successful!\nThank you for choosing BETA BANK\n\
+********************************\n\nDate: {}\nTransferred ${:.2f} to {}\n\
+Balance: ${:.2f}\n".format(date, transferAmount, userData[transferTo]['username'], userData[currentUserId]['balance']['USD']))
                 else:
                     print("Transfer Successful! Thank you for choosing BETA BANK.")
 
