@@ -13,9 +13,9 @@ def choose_transaction():
 def choose_currency():
     currencyChoice = ''
     while (currencyChoice != '1' or currencyChoice != '2' or currencyChoice != '0'):
-        currencyChoice = input('Choose 1 for KSH and 2 for USD. (q to quit, 1 to log out): ')
+        currencyChoice = input('Choose 1 for KSH and 2 for USD. (q to quit, 1 to log out from previous step): ')
     
-        if currencyChoice == 'q':
+        if currencyChoice.lower() == 'q':
             sys.exit()
         elif currencyChoice == '1':
             return 'KSH'

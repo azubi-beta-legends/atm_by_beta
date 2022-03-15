@@ -45,6 +45,8 @@ def withdraw(userData, currentUserId, currency):
 ********************************".format(date, currency.lower(), moneyToWithdraw, currency.lower(), newBalance))                    
         else:
             print("Withdrawal Successful! Thank you for choosing BETA BANK!")
+        jsonHandler.loguserData(currentUserId, date, 'Withdrawal', moneyToWithdraw, 'N/A', currentBalance, newBalance)
+        jsonHandler.logallData('Transaction_logs.csv', currentUserId, date, 'Withdrawal', moneyToWithdraw, 'N/A', currentBalance, newBalance)
 
 
 #depositing
@@ -70,6 +72,8 @@ def deposit(userData, currentUserId, currency):
 ********************************".format(date, currency.lower(), moneyToDeposit, currency.lower(), newBalance)) 
         else:
             print("Deposit Successful! Thank you for choosing BETA BANK.")
+        jsonHandler.loguserData(currentUserId, date, 'Withdrawal', moneyToDeposit, 'N/A', currentBalance, newBalance)
+        jsonHandler.logallData('Transaction_logs.csv', currentUserId, date, 'Withdrawal', moneyToDeposit, 'N/A', currentBalance, newBalance)
     
     else:
         print('Try again!')
@@ -103,6 +107,8 @@ def transfer(userData, currentUserId, currency):
 Balance: Ksh. {:.2f}\n".format(date, transferAmount, userData[transferTo]['username'], userData[currentUserId]['balance']['KSH']))
                 else:
                     print("Transfer Successful! Thank you for choosing BETA BANK.")
+                jsonHandler.loguserData(currentUserId, date, 'Transfer', transferAmount, 'N/A', userData[currentUserId]['balance']['KSH'], newBalance)
+                jsonHandler.logallData('Transaction_logs.csv', currentUserId, date, 'Transfer', transferAmount, transferTo, userData[currentUserId]['balance']['KSH'], newBalance)
                 
             else:
                 print('You have insufficient funds to complete the transaction!')
@@ -128,6 +134,8 @@ Balance: Ksh. {:.2f}\n".format(date, transferAmount, userData[transferTo]['usern
 Balance: ${:.2f}\n".format(date, transferAmount, userData[transferTo]['username'], userData[currentUserId]['balance']['USD']))
                 else:
                     print("Transfer Successful! Thank you for choosing BETA BANK.")
+                jsonHandler.loguserData(currentUserId, date, 'Transfer', transferAmount, 'N/A', userData[currentUserId]['balance']['USD'], newBalance)
+                jsonHandler.logallData('Transaction_logs.csv', currentUserId, date, 'Transfer', transferAmount, transferTo, userData[currentUserId]['balance']['USD'], newBalance)
 
             else:
                 print('You have insufficient funds to complete the transaction!')
